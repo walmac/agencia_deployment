@@ -13,7 +13,7 @@ db.authenticate()
     .then(() => console.log('Base de datos conectada'))
     .catch(error => console.log(error));
 
-const port = process.env.PORT || 4000; 
+
 
 // habilitar pug
 
@@ -34,7 +34,10 @@ app.use(express.static('public'));
 app.use('/',router);
 
 /** Puerto y Host para la app */
+const port = process.env.PORT || 4000; 
 const host = process.env.HOST || '0.0.0.0';
+
+app.set("port",port);
 
 app.listen(port,host ,() => {
     console.log(`El servidor esta funcionando en el host ${host} Puerto: ${port}`);
